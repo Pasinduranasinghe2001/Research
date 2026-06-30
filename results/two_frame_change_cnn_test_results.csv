@@ -1,0 +1,2 @@
+model,K,strategy,input_type,test_accuracy,test_precision,test_recall,test_f1,test_auc
+two_frame_change_cnn,2,early_late,stacked_6_channel,0.5901639344262295,0.5151515151515151,0.6538461538461539,0.576271186440678,0.7032967032967034

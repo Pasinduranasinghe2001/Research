@@ -1,0 +1,2 @@
+model,K,strategy,pooling_type,test_accuracy,test_precision,test_recall,test_f1,test_auc
+temporal_pooling_cnn,3,uniform,mean,0.5245901639344263,0.4727272727272727,1.0,0.6419753086419753,0.7307692307692307
