@@ -1,0 +1,17 @@
+{
+    "accuracy": 0.6781609195402298,
+    "precision": 0.47058823529411764,
+    "recall": 0.6153846153846154,
+    "f1": 0.5333333333333333,
+    "roc_auc": 0.7534678436317781,
+    "false_alarm_rate": 0.29508196721311475,
+    "tn": 43,
+    "fp": 18,
+    "fn": 10,
+    "tp": 16,
+    "loss": 0.6168932448858502,
+    "experiment_name": "lightweight_temporal_fusion_K3_uniform_gru",
+    "k": 3,
+    "strategy": "uniform",
+    "fusion_type": "gru"
+}

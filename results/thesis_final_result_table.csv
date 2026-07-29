@@ -1,9 +1,0 @@
-rank,experiment_name,model,K,strategy,test_accuracy,test_precision,test_recall,test_f1,test_auc
-1,temporal_pooling_K3_mean,temporal_pooling_cnn,3,uniform,0.5246,0.4727,1.0,0.642,0.7308
-2,temporal_pooling_K5_mean,temporal_pooling_cnn,5,uniform,0.541,0.4808,0.9615,0.641,0.6209
-3,temporal_pooling_K8_mean,temporal_pooling_cnn,8,uniform,0.5902,0.5116,0.8462,0.6377,0.6154
-4,proposed_change_aware_K5_uniform_noframedrop,proposed_change_aware_attention,5,uniform,0.4262,0.4262,1.0,0.5977,0.6396
-5,light_temporal_fusion_K3_attention,cnn_gru_light_temporal_fusion,3,uniform,0.4426,0.431,0.9615,0.5952,0.7044
-6,proposed_change_aware_K5_uniform,proposed_change_aware_attention,5,uniform,0.4426,0.431,0.9615,0.5952,0.5769
-7,single_frame_cnn,single_frame_cnn,1,recent,0.541,0.4762,0.7692,0.5882,0.6967
-8,two_frame_change_cnn,two_frame_change_cnn,2,early_late,0.5902,0.5152,0.6538,0.5763,0.7033

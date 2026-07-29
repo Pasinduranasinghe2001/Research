@@ -1,0 +1,17 @@
+{
+    "accuracy": 0.7011494252873564,
+    "precision": 0.5,
+    "recall": 0.46153846153846156,
+    "f1": 0.48,
+    "roc_auc": 0.7837326607818411,
+    "false_alarm_rate": 0.19672131147540983,
+    "tn": 49,
+    "fp": 12,
+    "fn": 14,
+    "tp": 12,
+    "loss": 0.6289328227097961,
+    "experiment_name": "lightweight_temporal_fusion_K8_uniform_attention",
+    "k": 8,
+    "strategy": "uniform",
+    "fusion_type": "attention"
+}

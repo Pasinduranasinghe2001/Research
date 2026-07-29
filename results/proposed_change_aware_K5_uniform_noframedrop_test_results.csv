@@ -1,2 +1,0 @@
-model,K,strategy,frame_drop_prob,test_accuracy,test_precision,test_recall,test_f1,test_auc
-proposed_change_aware_attention,5,uniform,0.25,0.4262295081967213,0.4262295081967213,1.0,0.5977011494252874,0.6395604395604395

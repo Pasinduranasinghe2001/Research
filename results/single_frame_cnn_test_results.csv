@@ -1,2 +1,0 @@
-model,K,strategy,test_accuracy,test_precision,test_recall,test_f1,test_auc
-single_frame_cnn,1,recent,0.5409836065573771,0.47619047619047616,0.7692307692307693,0.5882352941176471,0.6967032967032967
