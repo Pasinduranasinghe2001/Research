@@ -14,30 +14,37 @@ from src.dataset_loader import ConsistentTemporalTransform
 # SETTINGS
 # ==========================================================
 
-CSV_PATH = Path("data/processed/kframe_sequences/kframe_samples_K3.csv")
+CSV_PATH = Path(
+    "data/processed/kframe_sequences/kframe_samples_K3.csv"
+)
 
-OUTPUT_DIR = Path("results/figures/transformation_examples")
+OUTPUT_DIR = Path(
+    "results/figures/transformation_examples/different_sites"
+)
+
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 STRATEGY = "uniform"
 SPLIT = "train"
 
-NUM_EXAMPLES = 1
+# How many DIFFERENT sites you want
+NUM_SITES = 6
 
-# Fix random seed so results are repeatable
+# Which frame from each K=3 sequence
+# 0 = first frame
+# 1 = second frame
+# 2 = third frame
+FRAME_INDEX = 0
+
 random.seed(42)
 torch.manual_seed(42)
 
 
 # ==========================================================
-# FUNCTION: REVERSE IMAGENET NORMALIZATION
+# REVERSE IMAGENET NORMALIZATION
 # ==========================================================
 
 def denormalize_imagenet(tensor):
-    """
-    Convert ImageNet-normalized tensor back to displayable RGB image.
-    Tensor shape: [3, H, W]
-    """
 
     mean = torch.tensor(
         [0.485, 0.456, 0.406]
@@ -48,8 +55,6 @@ def denormalize_imagenet(tensor):
     ).view(3, 1, 1)
 
     tensor = tensor * std + mean
-
-    # Keep values between 0 and 1
     tensor = torch.clamp(tensor, 0, 1)
 
     return tensor
@@ -64,10 +69,26 @@ df = pd.read_csv(CSV_PATH)
 subset = df[
     (df["strategy"].astype(str).str.lower() == STRATEGY.lower()) &
     (df["split"].astype(str).str.lower() == SPLIT.lower())
-].reset_index(drop=True)
+].copy()
 
 if len(subset) == 0:
     raise ValueError("No matching samples found.")
+
+
+# ==========================================================
+# SELECT DIFFERENT SITES
+# ==========================================================
+
+# Keeps only ONE sample from each site
+different_sites = (
+    subset
+    .drop_duplicates(subset=["site_id"])
+    .reset_index(drop=True)
+)
+
+different_sites = different_sites.head(NUM_SITES)
+
+print(f"Found {len(different_sites)} different sites.")
 
 
 # ==========================================================
@@ -76,18 +97,18 @@ if len(subset) == 0:
 
 transform = ConsistentTemporalTransform(
     image_size=266,
-    train=True,                 # IMPORTANT: enables augmentation
+    train=True,
     normalization="imagenet"
 )
 
 
 # ==========================================================
-# CREATE EXAMPLES
+# PROCESS EACH SITE
 # ==========================================================
 
-for sample_index in range(min(NUM_EXAMPLES, len(subset))):
+for index, row in different_sites.iterrows():
 
-    row = subset.iloc[sample_index]
+    site_id = str(row["site_id"])
 
     paths = json.loads(row["full_paths"])
 
@@ -96,80 +117,93 @@ for sample_index in range(min(NUM_EXAMPLES, len(subset))):
         for path in paths
     ]
 
-    # Apply SAME augmentation to all frames
-    transformed_tensor = transform(original_images)
-
-    k = len(original_images)
+    # Make sure selected frame exists
+    if FRAME_INDEX >= len(original_images):
+        print(f"Skipping site {site_id}: frame does not exist")
+        continue
 
     # ------------------------------------------------------
-    # Figure
+    # ORIGINAL IMAGE
     # ------------------------------------------------------
 
-    fig, axes = plt.subplots(
-        2,
-        k,
-        figsize=(4 * k, 8)
+    original_image = original_images[FRAME_INDEX]
+
+    # ------------------------------------------------------
+    # APPLY PREPROCESSING TO WHOLE K-FRAME SEQUENCE
+    # ------------------------------------------------------
+
+    processed_sequence = transform(original_images)
+
+    processed_tensor = processed_sequence[FRAME_INDEX]
+
+    # Reverse normalization ONLY for visualization
+    processed_tensor = denormalize_imagenet(
+        processed_tensor
     )
 
-    # If K=1, matplotlib behaves differently
-    if k == 1:
-        axes = axes.reshape(2, 1)
+    display_processed = (
+        processed_tensor
+        .permute(1, 2, 0)
+        .cpu()
+        .numpy()
+    )
 
-    for i in range(k):
 
-        # ==================================================
-        # ORIGINAL
-        # ==================================================
+    # ======================================================
+    # CREATE ONE PNG FOR THIS SITE
+    # ======================================================
 
-        axes[0, i].imshow(original_images[i])
-        axes[0, i].axis("off")
+    fig, axes = plt.subplots(
+        1,
+        2,
+        figsize=(8, 4)
+    )
 
-        axes[0, i].set_title(
-            f"Original Frame {i + 1}",
-            fontsize=12,
-            fontweight="bold"
-        )
+    # ORIGINAL
+    axes[0].imshow(original_image)
+    axes[0].set_title(
+        "Original Image",
+        fontsize=14,
+        fontweight="bold"
+    )
+    axes[0].axis("off")
 
-        # ==================================================
-        # TRANSFORMED
-        # ==================================================
 
-        img_tensor = transformed_tensor[i]
+    # PREPROCESSED
+    axes[1].imshow(display_processed)
+    axes[1].set_title(
+        "After Preprocessing",
+        fontsize=14,
+        fontweight="bold"
+    )
+    axes[1].axis("off")
 
-        # Undo ImageNet normalization for visualization
-        img_tensor = denormalize_imagenet(img_tensor)
 
-        # PyTorch shape:
-        # [C,H,W]
-        #
-        # matplotlib wants:
-        # [H,W,C]
-
-        display_img = img_tensor.permute(1, 2, 0).numpy()
-
-        axes[1, i].imshow(display_img)
-        axes[1, i].axis("off")
-
-        axes[1, i].set_title(
-            f"Transformed Frame {i + 1}",
-            fontsize=12,
-            fontweight="bold"
-        )
-
+    # Main title
     fig.suptitle(
-        f"Original vs Training Transformation\n"
-        f"Site: {row['site_id']} | "
-        f"K={row['k']} | "
-        f"Strategy: {row['strategy']}",
-        fontsize=15,
+        f"Site {site_id}",
+        fontsize=16,
         fontweight="bold"
     )
 
     plt.tight_layout()
 
+
+    # ======================================================
+    # SAVE
+    # ======================================================
+
+    # Clean site ID so Windows filename is safe
+    safe_site_id = (
+        site_id
+        .replace("/", "_")
+        .replace("\\", "_")
+        .replace(":", "_")
+    )
+
     output_path = (
         OUTPUT_DIR /
-        f"sample_{sample_index + 1}_original_vs_transformed.png"
+        f"site_{safe_site_id}_original_vs_preprocessed.png"
     )
 
     plt.savefig(
@@ -178,6 +212,10 @@ for sample_index in range(min(NUM_EXAMPLES, len(subset))):
         bbox_inches="tight"
     )
 
-    plt.show()
+    plt.close()
 
-    print("Saved:", output_path)
+    print(f"Saved: {output_path}")
+
+
+print("\nDone!")
+print(f"Images saved in: {OUTPUT_DIR}")
