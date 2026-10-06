@@ -331,6 +331,39 @@ def compute_class_weights(csv_path, strategy):
 # ==================================================
 
 def run_experiment(k_value, fusion_type):
+    experiment_name = f"lightweight_temporal_fusion_K{k_value}_{STRATEGY}_{fusion_type}"
+    best_model_path = MODEL_DIR / f"{experiment_name}_best.pth"
+    history_path = RESULT_DIR / f"{experiment_name}_training_history.csv"
+    test_predictions_path = RESULT_DIR / f"{experiment_name}_test_predictions.csv"
+    test_metrics_path = RESULT_DIR / f"{experiment_name}_test_metrics.json"
+
+    if test_metrics_path.exists() and best_model_path.exists():
+        print("\n" + "=" * 70)
+        print(f"Skipping already completed experiment: {experiment_name}")
+        print("=" * 70)
+        with open(test_metrics_path, "r", encoding="utf-8") as f:
+            test_metrics = json.load(f)
+        return {
+            "experiment_name": experiment_name,
+            "k": k_value,
+            "strategy": STRATEGY,
+            "fusion_type": fusion_type,
+            "accuracy": test_metrics["accuracy"],
+            "precision": test_metrics["precision"],
+            "recall": test_metrics["recall"],
+            "f1": test_metrics["f1"],
+            "roc_auc": test_metrics["roc_auc"],
+            "false_alarm_rate": test_metrics["false_alarm_rate"],
+            "tn": test_metrics["tn"],
+            "fp": test_metrics["fp"],
+            "fn": test_metrics["fn"],
+            "tp": test_metrics["tp"],
+            "best_model_path": str(best_model_path),
+            "history_path": str(history_path),
+            "test_predictions_path": str(test_predictions_path),
+            "test_metrics_path": str(test_metrics_path)
+        }
+
     csv_path = f"data/processed/kframe_sequences/kframe_samples_K{k_value}.csv"
 
     print("\n" + "=" * 70)
@@ -339,8 +372,6 @@ def run_experiment(k_value, fusion_type):
     print(f"Strategy = {STRATEGY}")
     print(f"Fusion = {fusion_type}")
     print("=" * 70)
-
-    experiment_name = f"lightweight_temporal_fusion_K{k_value}_{STRATEGY}_{fusion_type}"
 
     train_loader = create_dataloader(
         csv_path=csv_path,

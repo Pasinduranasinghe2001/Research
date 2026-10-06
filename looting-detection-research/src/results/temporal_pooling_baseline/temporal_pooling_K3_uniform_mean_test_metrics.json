@@ -1,0 +1,17 @@
+{
+    "accuracy": 0.6436781609195402,
+    "precision": 0.45098039215686275,
+    "recall": 0.8846153846153846,
+    "f1": 0.5974025974025974,
+    "roc_auc": 0.800126103404792,
+    "false_alarm_rate": 0.45901639344262296,
+    "tn": 33,
+    "fp": 28,
+    "fn": 3,
+    "tp": 23,
+    "loss": 0.8293720087271997,
+    "experiment_name": "temporal_pooling_K3_uniform_mean",
+    "k": 3,
+    "strategy": "uniform",
+    "pooling_type": "mean"
+}
