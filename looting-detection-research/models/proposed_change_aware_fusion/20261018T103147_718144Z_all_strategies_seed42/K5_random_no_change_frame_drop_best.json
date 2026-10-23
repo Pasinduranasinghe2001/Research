@@ -1,0 +1,111 @@
+{
+  "architecture": "ChangeAwareTemporalFusionResNet18",
+  "config": {
+    "project_root": "E:\\research_university\\Research\\looting-detection-research",
+    "data_root": "E:\\research_university\\Research\\looting-detection-research\\data\\raw\\DAFA_LS",
+    "strategies": [
+      "recent_window",
+      "uniform",
+      "early_late",
+      "random"
+    ],
+    "k_values": [
+      3,
+      5,
+      8
+    ],
+    "device": "cuda",
+    "batch_size": 2,
+    "image_size": 266,
+    "epochs": 20,
+    "patience": 5,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0001,
+    "hidden_dim": 256,
+    "dropout": 0.3,
+    "projection_dropout": 0.2,
+    "grad_clip_norm": 5.0,
+    "frame_drop_probability": 0.25,
+    "freeze_backbone": false,
+    "seed": 42,
+    "num_workers": 0,
+    "deterministic": false,
+    "robustness_seed": 4242,
+    "robustness_repeats": 5,
+    "robustness_probabilities": [
+      0.25,
+      0.5
+    ],
+    "step6_run": null,
+    "step7_run": null,
+    "step8_run": null,
+    "step9_run": null,
+    "preflight_only": false,
+    "actual_device": "cuda",
+    "gpu_name": "NVIDIA GeForce GTX 1650 with Max-Q Design",
+    "torch_version": "2.7.1+cu118",
+    "torchvision_version": "0.22.1+cu118",
+    "cuda_runtime": "11.8",
+    "class_weights": [
+      0.6008064516129032,
+      2.98
+    ],
+    "label_mapping": {
+      "preserved": 0,
+      "looted": 1
+    },
+    "normalization": "imagenet",
+    "selection_rule": "among proposed variants only: highest best validation F1; ties: smaller K, then strategy order recent_window, uniform, early_late, random",
+    "variants": [
+      "no_change_no_drop",
+      "change_no_drop",
+      "no_change_frame_drop",
+      "proposed"
+    ]
+  },
+  "experiment": {
+    "status": "TRAINED",
+    "experiment_name": "K5_random_no_change_frame_drop",
+    "k": 5,
+    "strategy": "random",
+    "variant": "no_change_frame_drop",
+    "use_change_features": false,
+    "frame_drop_probability": 0.25,
+    "seed": 42,
+    "epochs_completed": 8,
+    "best_epoch": 3,
+    "best_val_f1": 0.3333333333333333,
+    "best_validation_metrics": {
+      "samples": 18,
+      "accuracy": 0.5555555555555556,
+      "precision": 0.6666666666666666,
+      "recall": 0.2222222222222222,
+      "f1": 0.3333333333333333,
+      "roc_auc": 0.7283950617283952,
+      "false_alarm_rate": 0.1111111111111111,
+      "tn": 8,
+      "fp": 1,
+      "fn": 7,
+      "tp": 2,
+      "loss": 0.9896218010975281,
+      "mean_retained_frames": 5.0,
+      "actual_dropped_fraction": 0.0
+    },
+    "stopping_reason": "early stopping: validation F1 did not improve",
+    "class_weights": [
+      0.6008064516129032,
+      2.98
+    ],
+    "best_model_path": "E:\\research_university\\Research\\looting-detection-research\\models\\proposed_change_aware_fusion\\20261018T103147_718144Z_all_strategies_seed42\\K5_random_no_change_frame_drop_best.pth",
+    "parameter_counts": {
+      "total": 11836226,
+      "trainable": 11836226,
+      "backbone": 11176512,
+      "projection": 264448,
+      "gru": 394752,
+      "classifier": 514
+    },
+    "checkpoint_sha256": "52d7dc526b02924981ba27b3459c1df41ecd83e79f43e42eadcdc1478a850209",
+    "output_dir": "E:\\research_university\\Research\\looting-detection-research\\results\\proposed_change_aware_fusion\\20261018T103147_718144Z_all_strategies_seed42\\K5_random_no_change_frame_drop"
+  }
+}

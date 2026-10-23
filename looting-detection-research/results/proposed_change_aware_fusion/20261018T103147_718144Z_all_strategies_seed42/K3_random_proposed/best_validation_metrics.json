@@ -1,0 +1,17 @@
+{
+  "epoch": 1,
+  "samples": 18,
+  "accuracy": 0.5,
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "roc_auc": 0.35802469135802467,
+  "false_alarm_rate": 0.0,
+  "tn": 9,
+  "fp": 0,
+  "fn": 9,
+  "tp": 0,
+  "loss": 2.1269388157519797,
+  "mean_retained_frames": 3.0,
+  "actual_dropped_fraction": 0.0
+}

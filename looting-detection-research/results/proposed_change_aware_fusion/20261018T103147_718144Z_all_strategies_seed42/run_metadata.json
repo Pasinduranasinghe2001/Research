@@ -1,0 +1,470 @@
+{
+  "status": "COMPLETE",
+  "phase": "complete",
+  "started_utc": "2026-10-18T10:31:47.720333+00:00",
+  "config": {
+    "project_root": "E:\\research_university\\Research\\looting-detection-research",
+    "data_root": "E:\\research_university\\Research\\looting-detection-research\\data\\raw\\DAFA_LS",
+    "strategies": [
+      "recent_window",
+      "uniform",
+      "early_late",
+      "random"
+    ],
+    "k_values": [
+      3,
+      5,
+      8
+    ],
+    "device": "cuda",
+    "batch_size": 2,
+    "image_size": 266,
+    "epochs": 20,
+    "patience": 5,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0001,
+    "hidden_dim": 256,
+    "dropout": 0.3,
+    "projection_dropout": 0.2,
+    "grad_clip_norm": 5.0,
+    "frame_drop_probability": 0.25,
+    "freeze_backbone": false,
+    "seed": 42,
+    "num_workers": 0,
+    "deterministic": false,
+    "robustness_seed": 4242,
+    "robustness_repeats": 5,
+    "robustness_probabilities": [
+      0.25,
+      0.5
+    ],
+    "step6_run": null,
+    "step7_run": null,
+    "step8_run": null,
+    "step9_run": null,
+    "preflight_only": false,
+    "actual_device": "cuda",
+    "gpu_name": "NVIDIA GeForce GTX 1650 with Max-Q Design",
+    "torch_version": "2.7.1+cu118",
+    "torchvision_version": "0.22.1+cu118",
+    "cuda_runtime": "11.8",
+    "class_weights": [
+      0.6008064516129032,
+      2.98
+    ],
+    "label_mapping": {
+      "preserved": 0,
+      "looted": 1
+    },
+    "normalization": "imagenet",
+    "selection_rule": "among proposed variants only: highest best validation F1; ties: smaller K, then strategy order recent_window, uniform, early_late, random",
+    "variants": [
+      "no_change_no_drop",
+      "change_no_drop",
+      "no_change_frame_drop",
+      "proposed"
+    ]
+  },
+  "site_counts": {
+    "train": {
+      "preserved": 496,
+      "looted": 100
+    },
+    "val": {
+      "preserved": 9,
+      "looted": 9
+    },
+    "test": {
+      "preserved": 35,
+      "looted": 26
+    }
+  },
+  "inputs": {
+    "site_splits": {
+      "path": "E:\\research_university\\Research\\looting-detection-research\\data\\splits\\site_splits.csv",
+      "sha256": "e4479c9a2e1b4b9e461f2d545ecfc7e53c59a4670070d4300557aced74873a00"
+    },
+    "frames_with_splits": {
+      "path": "E:\\research_university\\Research\\looting-detection-research\\data\\splits\\frames_with_splits.csv",
+      "sha256": "e36b3eb0aefd6f6b3f0732ed1af4b537fbbccc69be5e4e171e6af75201198520"
+    },
+    "dataset_loader": {
+      "path": "E:\\research_university\\Research\\looting-detection-research\\src\\dataset_loader.py",
+      "sha256": "2568ccbfc013d8f9fe620d71092bc908c6c68dc7954d5e58d315a94703586292"
+    },
+    "training_script": {
+      "path": "E:\\research_university\\Research\\looting-detection-research\\src\\step10_train_proposed_model.py",
+      "sha256": "4e7f390e600df386ab86ac352b48d083945ebada1ec6bedf8d0b760d5e7ce010"
+    },
+    "k3_samples": {
+      "path": "E:\\research_university\\Research\\looting-detection-research\\data\\processed\\kframe_sequences\\kframe_samples_K3.csv",
+      "sha256": "2a67a5103434473d5509df77dd285f608a720e86159f1cdfacb3af9c9f299e96"
+    },
+    "k5_samples": {
+      "path": "E:\\research_university\\Research\\looting-detection-research\\data\\processed\\kframe_sequences\\kframe_samples_K5.csv",
+      "sha256": "e0c8399b0b0cfab4c08903c017d5dbc74e3cabbeb081187ce8cafed7ee38d5a8"
+    },
+    "k8_samples": {
+      "path": "E:\\research_university\\Research\\looting-detection-research\\data\\processed\\kframe_sequences\\kframe_samples_K8.csv",
+      "sha256": "f7b9ab6c810c905389801934f86710a379797bdf02b486cb24c14c473b66e887"
+    }
+  },
+  "planned_experiments": [
+    {
+      "k": 3,
+      "strategy": "recent_window",
+      "variant": "no_change_no_drop"
+    },
+    {
+      "k": 3,
+      "strategy": "recent_window",
+      "variant": "change_no_drop"
+    },
+    {
+      "k": 3,
+      "strategy": "recent_window",
+      "variant": "no_change_frame_drop"
+    },
+    {
+      "k": 3,
+      "strategy": "recent_window",
+      "variant": "proposed"
+    },
+    {
+      "k": 3,
+      "strategy": "uniform",
+      "variant": "no_change_no_drop"
+    },
+    {
+      "k": 3,
+      "strategy": "uniform",
+      "variant": "change_no_drop"
+    },
+    {
+      "k": 3,
+      "strategy": "uniform",
+      "variant": "no_change_frame_drop"
+    },
+    {
+      "k": 3,
+      "strategy": "uniform",
+      "variant": "proposed"
+    },
+    {
+      "k": 3,
+      "strategy": "early_late",
+      "variant": "no_change_no_drop"
+    },
+    {
+      "k": 3,
+      "strategy": "early_late",
+      "variant": "change_no_drop"
+    },
+    {
+      "k": 3,
+      "strategy": "early_late",
+      "variant": "no_change_frame_drop"
+    },
+    {
+      "k": 3,
+      "strategy": "early_late",
+      "variant": "proposed"
+    },
+    {
+      "k": 3,
+      "strategy": "random",
+      "variant": "no_change_no_drop"
+    },
+    {
+      "k": 3,
+      "strategy": "random",
+      "variant": "change_no_drop"
+    },
+    {
+      "k": 3,
+      "strategy": "random",
+      "variant": "no_change_frame_drop"
+    },
+    {
+      "k": 3,
+      "strategy": "random",
+      "variant": "proposed"
+    },
+    {
+      "k": 5,
+      "strategy": "recent_window",
+      "variant": "no_change_no_drop"
+    },
+    {
+      "k": 5,
+      "strategy": "recent_window",
+      "variant": "change_no_drop"
+    },
+    {
+      "k": 5,
+      "strategy": "recent_window",
+      "variant": "no_change_frame_drop"
+    },
+    {
+      "k": 5,
+      "strategy": "recent_window",
+      "variant": "proposed"
+    },
+    {
+      "k": 5,
+      "strategy": "uniform",
+      "variant": "no_change_no_drop"
+    },
+    {
+      "k": 5,
+      "strategy": "uniform",
+      "variant": "change_no_drop"
+    },
+    {
+      "k": 5,
+      "strategy": "uniform",
+      "variant": "no_change_frame_drop"
+    },
+    {
+      "k": 5,
+      "strategy": "uniform",
+      "variant": "proposed"
+    },
+    {
+      "k": 5,
+      "strategy": "early_late",
+      "variant": "no_change_no_drop"
+    },
+    {
+      "k": 5,
+      "strategy": "early_late",
+      "variant": "change_no_drop"
+    },
+    {
+      "k": 5,
+      "strategy": "early_late",
+      "variant": "no_change_frame_drop"
+    },
+    {
+      "k": 5,
+      "strategy": "early_late",
+      "variant": "proposed"
+    },
+    {
+      "k": 5,
+      "strategy": "random",
+      "variant": "no_change_no_drop"
+    },
+    {
+      "k": 5,
+      "strategy": "random",
+      "variant": "change_no_drop"
+    },
+    {
+      "k": 5,
+      "strategy": "random",
+      "variant": "no_change_frame_drop"
+    },
+    {
+      "k": 5,
+      "strategy": "random",
+      "variant": "proposed"
+    },
+    {
+      "k": 8,
+      "strategy": "recent_window",
+      "variant": "no_change_no_drop"
+    },
+    {
+      "k": 8,
+      "strategy": "recent_window",
+      "variant": "change_no_drop"
+    },
+    {
+      "k": 8,
+      "strategy": "recent_window",
+      "variant": "no_change_frame_drop"
+    },
+    {
+      "k": 8,
+      "strategy": "recent_window",
+      "variant": "proposed"
+    },
+    {
+      "k": 8,
+      "strategy": "uniform",
+      "variant": "no_change_no_drop"
+    },
+    {
+      "k": 8,
+      "strategy": "uniform",
+      "variant": "change_no_drop"
+    },
+    {
+      "k": 8,
+      "strategy": "uniform",
+      "variant": "no_change_frame_drop"
+    },
+    {
+      "k": 8,
+      "strategy": "uniform",
+      "variant": "proposed"
+    },
+    {
+      "k": 8,
+      "strategy": "early_late",
+      "variant": "no_change_no_drop"
+    },
+    {
+      "k": 8,
+      "strategy": "early_late",
+      "variant": "change_no_drop"
+    },
+    {
+      "k": 8,
+      "strategy": "early_late",
+      "variant": "no_change_frame_drop"
+    },
+    {
+      "k": 8,
+      "strategy": "early_late",
+      "variant": "proposed"
+    },
+    {
+      "k": 8,
+      "strategy": "random",
+      "variant": "no_change_no_drop"
+    },
+    {
+      "k": 8,
+      "strategy": "random",
+      "variant": "change_no_drop"
+    },
+    {
+      "k": 8,
+      "strategy": "random",
+      "variant": "no_change_frame_drop"
+    },
+    {
+      "k": 8,
+      "strategy": "random",
+      "variant": "proposed"
+    }
+  ],
+  "training_completed": [
+    "K3_recent_window_no_change_no_drop",
+    "K3_recent_window_change_no_drop",
+    "K3_recent_window_no_change_frame_drop",
+    "K3_recent_window_proposed",
+    "K3_uniform_no_change_no_drop",
+    "K3_uniform_change_no_drop",
+    "K3_uniform_no_change_frame_drop",
+    "K3_uniform_proposed",
+    "K3_early_late_no_change_no_drop",
+    "K3_early_late_change_no_drop",
+    "K3_early_late_no_change_frame_drop",
+    "K3_early_late_proposed",
+    "K3_random_no_change_no_drop",
+    "K3_random_change_no_drop",
+    "K3_random_no_change_frame_drop",
+    "K3_random_proposed",
+    "K5_recent_window_no_change_no_drop",
+    "K5_recent_window_change_no_drop",
+    "K5_recent_window_no_change_frame_drop",
+    "K5_recent_window_proposed",
+    "K5_uniform_no_change_no_drop",
+    "K5_uniform_change_no_drop",
+    "K5_uniform_no_change_frame_drop",
+    "K5_uniform_proposed",
+    "K5_early_late_no_change_no_drop",
+    "K5_early_late_change_no_drop",
+    "K5_early_late_no_change_frame_drop",
+    "K5_early_late_proposed",
+    "K5_random_no_change_no_drop",
+    "K5_random_change_no_drop",
+    "K5_random_no_change_frame_drop",
+    "K5_random_proposed",
+    "K8_recent_window_no_change_no_drop",
+    "K8_recent_window_change_no_drop",
+    "K8_recent_window_no_change_frame_drop",
+    "K8_recent_window_proposed",
+    "K8_uniform_no_change_no_drop",
+    "K8_uniform_change_no_drop",
+    "K8_uniform_no_change_frame_drop",
+    "K8_uniform_proposed",
+    "K8_early_late_no_change_no_drop",
+    "K8_early_late_change_no_drop",
+    "K8_early_late_no_change_frame_drop",
+    "K8_early_late_proposed",
+    "K8_random_no_change_no_drop",
+    "K8_random_change_no_drop",
+    "K8_random_no_change_frame_drop",
+    "K8_random_proposed"
+  ],
+  "selected_configuration": {
+    "selection_rule": "among proposed variants only: highest best validation F1; ties: smaller K, then strategy order recent_window, uniform, early_late, random",
+    "selected_before_test_evaluation": true,
+    "selected_utc": "2026-10-18T16:22:26.483375+00:00",
+    "experiment_name": "K3_early_late_proposed",
+    "k": 3,
+    "strategy": "early_late",
+    "variant": "proposed",
+    "best_val_f1": 0.8,
+    "best_epoch": 6,
+    "best_model_path": "E:\\research_university\\Research\\looting-detection-research\\models\\proposed_change_aware_fusion\\20261018T103147_718144Z_all_strategies_seed42\\K3_early_late_proposed_best.pth",
+    "checkpoint_sha256": "b6c40ad9f599f12dfcaa651ce6af602fd33ab1fe00b31a81f5707b36b69d3d35"
+  },
+  "test_completed": [
+    "K3_recent_window_no_change_no_drop",
+    "K3_recent_window_change_no_drop",
+    "K3_recent_window_no_change_frame_drop",
+    "K3_recent_window_proposed",
+    "K3_uniform_no_change_no_drop",
+    "K3_uniform_change_no_drop",
+    "K3_uniform_no_change_frame_drop",
+    "K3_uniform_proposed",
+    "K3_early_late_no_change_no_drop",
+    "K3_early_late_change_no_drop",
+    "K3_early_late_no_change_frame_drop",
+    "K3_early_late_proposed",
+    "K3_random_no_change_no_drop",
+    "K3_random_change_no_drop",
+    "K3_random_no_change_frame_drop",
+    "K3_random_proposed",
+    "K5_recent_window_no_change_no_drop",
+    "K5_recent_window_change_no_drop",
+    "K5_recent_window_no_change_frame_drop",
+    "K5_recent_window_proposed",
+    "K5_uniform_no_change_no_drop",
+    "K5_uniform_change_no_drop",
+    "K5_uniform_no_change_frame_drop",
+    "K5_uniform_proposed",
+    "K5_early_late_no_change_no_drop",
+    "K5_early_late_change_no_drop",
+    "K5_early_late_no_change_frame_drop",
+    "K5_early_late_proposed",
+    "K5_random_no_change_no_drop",
+    "K5_random_change_no_drop",
+    "K5_random_no_change_frame_drop",
+    "K5_random_proposed",
+    "K8_recent_window_no_change_no_drop",
+    "K8_recent_window_change_no_drop",
+    "K8_recent_window_no_change_frame_drop",
+    "K8_recent_window_proposed",
+    "K8_uniform_no_change_no_drop",
+    "K8_uniform_change_no_drop",
+    "K8_uniform_no_change_frame_drop",
+    "K8_uniform_proposed",
+    "K8_early_late_no_change_no_drop",
+    "K8_early_late_change_no_drop",
+    "K8_early_late_no_change_frame_drop",
+    "K8_early_late_proposed",
+    "K8_random_no_change_no_drop",
+    "K8_random_change_no_drop",
+    "K8_random_no_change_frame_drop",
+    "K8_random_proposed"
+  ],
+  "completed_utc": "2026-10-18T16:25:42.607736+00:00",
+  "completed_experiments": 48,
+  "baseline_comparison_complete": true
+}

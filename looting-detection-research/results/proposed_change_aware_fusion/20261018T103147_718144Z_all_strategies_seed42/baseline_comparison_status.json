@@ -1,0 +1,30 @@
+{
+  "status": "COMPLETE",
+  "checks": [
+    {
+      "step": 6,
+      "status": "included",
+      "run": "E:\\research_university\\Research\\looting-detection-research\\results\\single_frame_baseline\\20261013T184026_546585Z_recent_window_seed42",
+      "rejected_runs": []
+    },
+    {
+      "step": 7,
+      "status": "included",
+      "run": "E:\\research_university\\Research\\looting-detection-research\\results\\two_frame_change_baseline\\20261014T030318_252422Z_early_late_seed42",
+      "rejected_runs": []
+    },
+    {
+      "step": 8,
+      "status": "included",
+      "run": "E:\\research_university\\Research\\looting-detection-research\\results\\temporal_pooling_baseline\\20261014T042958_719428Z_all_strategies_seed42",
+      "rejected_runs": []
+    },
+    {
+      "step": 9,
+      "status": "included",
+      "run": "E:\\research_university\\Research\\looting-detection-research\\results\\lightweight_temporal_fusion\\20261014T121946_001827Z_all_strategies_seed42",
+      "rejected_runs": []
+    }
+  ],
+  "scope": "Matched source metadata, loader, preprocessing and test identities. Training settings are recorded; cross-step comparisons are descriptive, not controlled ablations or significance tests."
+}

@@ -1,0 +1,13 @@
+{
+  "selection_rule": "highest best validation F1; ties: smaller K, then GRU, then strategy order recent_window, uniform, early_late, random",
+  "selected_before_test_evaluation": true,
+  "selected_utc": "2026-10-14T15:20:50.101874+00:00",
+  "experiment_name": "K8_recent_window_gru",
+  "k": 8,
+  "strategy": "recent_window",
+  "fusion_type": "gru",
+  "best_val_f1": 0.8888888888888888,
+  "best_epoch": 8,
+  "best_model_path": "E:\\research_university\\Research\\looting-detection-research\\models\\lightweight_temporal_fusion\\20261014T121946_001827Z_all_strategies_seed42\\K8_recent_window_gru_best.pth",
+  "checkpoint_sha256": "8902ec981474261863defd98fefbf3871864c401a6b5f3973cb9e1b2228bbd4e"
+}

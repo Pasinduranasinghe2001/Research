@@ -1,0 +1,13 @@
+{
+  "selection_rule": "highest best validation F1; ties: smaller K, then mean pooling, then strategy order recent_window, uniform, early_late, random",
+  "selected_before_test_evaluation": true,
+  "selected_utc": "2026-10-14T07:42:26.868965+00:00",
+  "experiment_name": "K5_random_max",
+  "k": 5,
+  "strategy": "random",
+  "pooling_type": "max",
+  "best_val_f1": 0.8888888888888888,
+  "best_epoch": 8,
+  "best_model_path": "E:\\research_university\\Research\\looting-detection-research\\models\\temporal_pooling_baseline\\20261014T042958_719428Z_all_strategies_seed42\\K5_random_max_best.pth",
+  "checkpoint_sha256": "890ce89f0f8c5209e18f5f3a135c9a74a3f36816ef8947bbfecd94236b7375c7"
+}

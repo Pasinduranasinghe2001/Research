@@ -1,0 +1,13 @@
+{
+  "selection_rule": "among proposed variants only: highest best validation F1; ties: smaller K, then strategy order recent_window, uniform, early_late, random",
+  "selected_before_test_evaluation": true,
+  "selected_utc": "2026-10-18T16:22:26.483375+00:00",
+  "experiment_name": "K3_early_late_proposed",
+  "k": 3,
+  "strategy": "early_late",
+  "variant": "proposed",
+  "best_val_f1": 0.8,
+  "best_epoch": 6,
+  "best_model_path": "E:\\research_university\\Research\\looting-detection-research\\models\\proposed_change_aware_fusion\\20261018T103147_718144Z_all_strategies_seed42\\K3_early_late_proposed_best.pth",
+  "checkpoint_sha256": "b6c40ad9f599f12dfcaa651ce6af602fd33ab1fe00b31a81f5707b36b69d3d35"
+}

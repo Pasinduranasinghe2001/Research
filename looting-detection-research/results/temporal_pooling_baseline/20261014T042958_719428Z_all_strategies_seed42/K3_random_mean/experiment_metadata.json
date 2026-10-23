@@ -1,0 +1,98 @@
+{
+  "status": "COMPLETE",
+  "experiment_name": "K3_random_mean",
+  "k": 3,
+  "pooling_type": "mean",
+  "strategy": "random",
+  "seed": 42,
+  "config": {
+    "project_root": "E:\\research_university\\Research\\looting-detection-research",
+    "data_root": "E:\\research_university\\Research\\looting-detection-research\\data\\raw\\DAFA_LS",
+    "strategies": [
+      "recent_window",
+      "uniform",
+      "early_late",
+      "random"
+    ],
+    "k_values": [
+      3,
+      5,
+      8
+    ],
+    "pooling_types": [
+      "mean",
+      "max"
+    ],
+    "device": "cuda",
+    "batch_size": 2,
+    "image_size": 266,
+    "epochs": 20,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0001,
+    "dropout": 0.3,
+    "patience": 5,
+    "seed": 42,
+    "num_workers": 0,
+    "deterministic": false,
+    "preflight_only": false,
+    "actual_device": "cuda",
+    "gpu_name": "NVIDIA GeForce GTX 1650 with Max-Q Design",
+    "torch_version": "2.7.1+cu118",
+    "torchvision_version": "0.22.1+cu118",
+    "cuda_runtime": "11.8",
+    "class_weights": [
+      0.6008064516129032,
+      2.98
+    ],
+    "label_mapping": {
+      "preserved": 0,
+      "looted": 1
+    },
+    "normalization": "imagenet",
+    "selection_rule": "highest best validation F1; ties: smaller K, then mean pooling, then strategy order recent_window, uniform, early_late, random"
+  },
+  "best_model_path": "E:\\research_university\\Research\\looting-detection-research\\models\\temporal_pooling_baseline\\20261014T042958_719428Z_all_strategies_seed42\\K3_random_mean_best.pth",
+  "progress": {
+    "epochs_completed": 9,
+    "best_epoch": 4,
+    "best_val_f1": 0.7619047619047619
+  },
+  "epochs_completed": 9,
+  "best_epoch": 4,
+  "best_val_f1": 0.7619047619047619,
+  "best_validation_metrics": {
+    "samples": 18,
+    "accuracy": 0.7222222222222222,
+    "precision": 0.6666666666666666,
+    "recall": 0.8888888888888888,
+    "f1": 0.7619047619047619,
+    "roc_auc": 0.8765432098765432,
+    "false_alarm_rate": 0.4444444444444444,
+    "tn": 5,
+    "fp": 4,
+    "fn": 1,
+    "tp": 8,
+    "loss": 0.29806893366096177
+  },
+  "stopping_reason": "early stopping: validation F1 did not improve",
+  "class_weights": [
+    0.6008064516129032,
+    2.98
+  ],
+  "checkpoint_sha256": "a4643a2ca12078a5bdd26440241e4e9ade729f759601f10e69e298829b211b49",
+  "output_dir": "E:\\research_university\\Research\\looting-detection-research\\results\\temporal_pooling_baseline\\20261014T042958_719428Z_all_strategies_seed42\\K3_random_mean",
+  "test_metrics": {
+    "samples": 61,
+    "accuracy": 0.5901639344262295,
+    "precision": 0.5172413793103449,
+    "recall": 0.5769230769230769,
+    "f1": 0.5454545454545454,
+    "roc_auc": 0.6472527472527473,
+    "false_alarm_rate": 0.4,
+    "tn": 21,
+    "fp": 14,
+    "fn": 11,
+    "tp": 15,
+    "loss": 0.6520548095435502
+  }
+}

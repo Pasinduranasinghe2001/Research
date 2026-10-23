@@ -1,0 +1,16 @@
+{
+  "samples": 61,
+  "accuracy": 0.7049180327868853,
+  "precision": 0.6333333333333333,
+  "recall": 0.7307692307692307,
+  "f1": 0.6785714285714286,
+  "roc_auc": 0.7813186813186813,
+  "false_alarm_rate": 0.3142857142857143,
+  "tn": 24,
+  "fp": 11,
+  "fn": 7,
+  "tp": 19,
+  "loss": 0.6372014131922681,
+  "mean_retained_frames": 3.0,
+  "actual_dropped_fraction": 0.0
+}

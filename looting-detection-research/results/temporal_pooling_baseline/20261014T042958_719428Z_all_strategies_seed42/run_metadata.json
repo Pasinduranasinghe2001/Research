@@ -1,0 +1,284 @@
+{
+  "status": "COMPLETE",
+  "phase": "complete",
+  "started_utc": "2026-10-14T04:29:58.720053+00:00",
+  "config": {
+    "project_root": "E:\\research_university\\Research\\looting-detection-research",
+    "data_root": "E:\\research_university\\Research\\looting-detection-research\\data\\raw\\DAFA_LS",
+    "strategies": [
+      "recent_window",
+      "uniform",
+      "early_late",
+      "random"
+    ],
+    "k_values": [
+      3,
+      5,
+      8
+    ],
+    "pooling_types": [
+      "mean",
+      "max"
+    ],
+    "device": "cuda",
+    "batch_size": 2,
+    "image_size": 266,
+    "epochs": 20,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0001,
+    "dropout": 0.3,
+    "patience": 5,
+    "seed": 42,
+    "num_workers": 0,
+    "deterministic": false,
+    "preflight_only": false,
+    "actual_device": "cuda",
+    "gpu_name": "NVIDIA GeForce GTX 1650 with Max-Q Design",
+    "torch_version": "2.7.1+cu118",
+    "torchvision_version": "0.22.1+cu118",
+    "cuda_runtime": "11.8",
+    "class_weights": [
+      0.6008064516129032,
+      2.98
+    ],
+    "label_mapping": {
+      "preserved": 0,
+      "looted": 1
+    },
+    "normalization": "imagenet",
+    "selection_rule": "highest best validation F1; ties: smaller K, then mean pooling, then strategy order recent_window, uniform, early_late, random"
+  },
+  "site_counts": {
+    "train": {
+      "preserved": 496,
+      "looted": 100
+    },
+    "val": {
+      "preserved": 9,
+      "looted": 9
+    },
+    "test": {
+      "preserved": 35,
+      "looted": 26
+    }
+  },
+  "inputs": {
+    "site_splits": {
+      "path": "E:\\research_university\\Research\\looting-detection-research\\data\\splits\\site_splits.csv",
+      "sha256": "e4479c9a2e1b4b9e461f2d545ecfc7e53c59a4670070d4300557aced74873a00"
+    },
+    "frames_with_splits": {
+      "path": "E:\\research_university\\Research\\looting-detection-research\\data\\splits\\frames_with_splits.csv",
+      "sha256": "e36b3eb0aefd6f6b3f0732ed1af4b537fbbccc69be5e4e171e6af75201198520"
+    },
+    "dataset_loader": {
+      "path": "E:\\research_university\\Research\\looting-detection-research\\src\\dataset_loader.py",
+      "sha256": "2568ccbfc013d8f9fe620d71092bc908c6c68dc7954d5e58d315a94703586292"
+    },
+    "training_script": {
+      "path": "E:\\research_university\\Research\\looting-detection-research\\src\\step8_train_temporal_pooling_baseline.py",
+      "sha256": "eddeea582c5fe30f95c19a3fa26b7485cd3d21e723b395df03e321dc8a45ab4a"
+    },
+    "k3_samples": {
+      "path": "E:\\research_university\\Research\\looting-detection-research\\data\\processed\\kframe_sequences\\kframe_samples_K3.csv",
+      "sha256": "2a67a5103434473d5509df77dd285f608a720e86159f1cdfacb3af9c9f299e96"
+    },
+    "k5_samples": {
+      "path": "E:\\research_university\\Research\\looting-detection-research\\data\\processed\\kframe_sequences\\kframe_samples_K5.csv",
+      "sha256": "e0c8399b0b0cfab4c08903c017d5dbc74e3cabbeb081187ce8cafed7ee38d5a8"
+    },
+    "k8_samples": {
+      "path": "E:\\research_university\\Research\\looting-detection-research\\data\\processed\\kframe_sequences\\kframe_samples_K8.csv",
+      "sha256": "f7b9ab6c810c905389801934f86710a379797bdf02b486cb24c14c473b66e887"
+    }
+  },
+  "planned_experiments": [
+    {
+      "k": 3,
+      "strategy": "recent_window",
+      "pooling_type": "mean"
+    },
+    {
+      "k": 3,
+      "strategy": "recent_window",
+      "pooling_type": "max"
+    },
+    {
+      "k": 3,
+      "strategy": "uniform",
+      "pooling_type": "mean"
+    },
+    {
+      "k": 3,
+      "strategy": "uniform",
+      "pooling_type": "max"
+    },
+    {
+      "k": 3,
+      "strategy": "early_late",
+      "pooling_type": "mean"
+    },
+    {
+      "k": 3,
+      "strategy": "early_late",
+      "pooling_type": "max"
+    },
+    {
+      "k": 3,
+      "strategy": "random",
+      "pooling_type": "mean"
+    },
+    {
+      "k": 3,
+      "strategy": "random",
+      "pooling_type": "max"
+    },
+    {
+      "k": 5,
+      "strategy": "recent_window",
+      "pooling_type": "mean"
+    },
+    {
+      "k": 5,
+      "strategy": "recent_window",
+      "pooling_type": "max"
+    },
+    {
+      "k": 5,
+      "strategy": "uniform",
+      "pooling_type": "mean"
+    },
+    {
+      "k": 5,
+      "strategy": "uniform",
+      "pooling_type": "max"
+    },
+    {
+      "k": 5,
+      "strategy": "early_late",
+      "pooling_type": "mean"
+    },
+    {
+      "k": 5,
+      "strategy": "early_late",
+      "pooling_type": "max"
+    },
+    {
+      "k": 5,
+      "strategy": "random",
+      "pooling_type": "mean"
+    },
+    {
+      "k": 5,
+      "strategy": "random",
+      "pooling_type": "max"
+    },
+    {
+      "k": 8,
+      "strategy": "recent_window",
+      "pooling_type": "mean"
+    },
+    {
+      "k": 8,
+      "strategy": "recent_window",
+      "pooling_type": "max"
+    },
+    {
+      "k": 8,
+      "strategy": "uniform",
+      "pooling_type": "mean"
+    },
+    {
+      "k": 8,
+      "strategy": "uniform",
+      "pooling_type": "max"
+    },
+    {
+      "k": 8,
+      "strategy": "early_late",
+      "pooling_type": "mean"
+    },
+    {
+      "k": 8,
+      "strategy": "early_late",
+      "pooling_type": "max"
+    },
+    {
+      "k": 8,
+      "strategy": "random",
+      "pooling_type": "mean"
+    },
+    {
+      "k": 8,
+      "strategy": "random",
+      "pooling_type": "max"
+    }
+  ],
+  "training_completed": [
+    "K3_recent_window_mean",
+    "K3_recent_window_max",
+    "K3_uniform_mean",
+    "K3_uniform_max",
+    "K3_early_late_mean",
+    "K3_early_late_max",
+    "K3_random_mean",
+    "K3_random_max",
+    "K5_recent_window_mean",
+    "K5_recent_window_max",
+    "K5_uniform_mean",
+    "K5_uniform_max",
+    "K5_early_late_mean",
+    "K5_early_late_max",
+    "K5_random_mean",
+    "K5_random_max",
+    "K8_recent_window_mean",
+    "K8_recent_window_max",
+    "K8_uniform_mean",
+    "K8_uniform_max",
+    "K8_early_late_mean",
+    "K8_early_late_max",
+    "K8_random_mean",
+    "K8_random_max"
+  ],
+  "selected_configuration": {
+    "selection_rule": "highest best validation F1; ties: smaller K, then mean pooling, then strategy order recent_window, uniform, early_late, random",
+    "selected_before_test_evaluation": true,
+    "selected_utc": "2026-10-14T07:42:26.868965+00:00",
+    "experiment_name": "K5_random_max",
+    "k": 5,
+    "strategy": "random",
+    "pooling_type": "max",
+    "best_val_f1": 0.8888888888888888,
+    "best_epoch": 8,
+    "best_model_path": "E:\\research_university\\Research\\looting-detection-research\\models\\temporal_pooling_baseline\\20261014T042958_719428Z_all_strategies_seed42\\K5_random_max_best.pth",
+    "checkpoint_sha256": "890ce89f0f8c5209e18f5f3a135c9a74a3f36816ef8947bbfecd94236b7375c7"
+  },
+  "test_completed": [
+    "K3_recent_window_mean",
+    "K3_recent_window_max",
+    "K3_uniform_mean",
+    "K3_uniform_max",
+    "K3_early_late_mean",
+    "K3_early_late_max",
+    "K3_random_mean",
+    "K3_random_max",
+    "K5_recent_window_mean",
+    "K5_recent_window_max",
+    "K5_uniform_mean",
+    "K5_uniform_max",
+    "K5_early_late_mean",
+    "K5_early_late_max",
+    "K5_random_mean",
+    "K5_random_max",
+    "K8_recent_window_mean",
+    "K8_recent_window_max",
+    "K8_uniform_mean",
+    "K8_uniform_max",
+    "K8_early_late_mean",
+    "K8_early_late_max",
+    "K8_random_mean",
+    "K8_random_max"
+  ],
+  "completed_utc": "2026-10-14T07:43:51.125580+00:00",
+  "completed_experiments": 24
+}

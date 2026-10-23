@@ -1,0 +1,108 @@
+{
+  "status": "COMPLETE",
+  "experiment_name": "K5_uniform_gru",
+  "k": 5,
+  "fusion_type": "gru",
+  "strategy": "uniform",
+  "seed": 42,
+  "config": {
+    "project_root": "E:\\research_university\\Research\\looting-detection-research",
+    "data_root": "E:\\research_university\\Research\\looting-detection-research\\data\\raw\\DAFA_LS",
+    "strategies": [
+      "recent_window",
+      "uniform",
+      "early_late",
+      "random"
+    ],
+    "k_values": [
+      3,
+      5,
+      8
+    ],
+    "fusion_types": [
+      "gru",
+      "attention"
+    ],
+    "device": "auto",
+    "batch_size": 2,
+    "image_size": 266,
+    "epochs": 20,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0001,
+    "dropout": 0.3,
+    "gru_hidden_dim": 256,
+    "attention_dim": 128,
+    "freeze_backbone": false,
+    "patience": 5,
+    "seed": 42,
+    "num_workers": 0,
+    "deterministic": false,
+    "preflight_only": false,
+    "actual_device": "cuda",
+    "gpu_name": "NVIDIA GeForce GTX 1650 with Max-Q Design",
+    "torch_version": "2.7.1+cu118",
+    "torchvision_version": "0.22.1+cu118",
+    "cuda_runtime": "11.8",
+    "class_weights": [
+      0.6008064516129032,
+      2.98
+    ],
+    "label_mapping": {
+      "preserved": 0,
+      "looted": 1
+    },
+    "normalization": "imagenet",
+    "selection_rule": "highest best validation F1; ties: smaller K, then GRU, then strategy order recent_window, uniform, early_late, random"
+  },
+  "best_model_path": "E:\\research_university\\Research\\looting-detection-research\\models\\lightweight_temporal_fusion\\20261014T121946_001827Z_all_strategies_seed42\\K5_uniform_gru_best.pth",
+  "parameter_counts": {
+    "total": 11768386,
+    "trainable": 11768386,
+    "backbone": 11176512,
+    "fusion": 591360,
+    "classifier": 514
+  },
+  "progress": {
+    "epochs_completed": 9,
+    "best_epoch": 4,
+    "best_val_f1": 0.8421052631578947
+  },
+  "epochs_completed": 9,
+  "best_epoch": 4,
+  "best_val_f1": 0.8421052631578947,
+  "best_validation_metrics": {
+    "samples": 18,
+    "accuracy": 0.8333333333333334,
+    "precision": 0.8,
+    "recall": 0.8888888888888888,
+    "f1": 0.8421052631578947,
+    "roc_auc": 0.8765432098765431,
+    "false_alarm_rate": 0.2222222222222222,
+    "tn": 7,
+    "fp": 2,
+    "fn": 1,
+    "tp": 8,
+    "loss": 0.6432124264163203
+  },
+  "stopping_reason": "early stopping: validation F1 did not improve",
+  "class_weights": [
+    0.6008064516129032,
+    2.98
+  ],
+  "checkpoint_sha256": "f1f599d91f2c7ddaf7cc62f178381b07449cfd3de16897b60e821cea71f66dda",
+  "output_dir": "E:\\research_university\\Research\\looting-detection-research\\results\\lightweight_temporal_fusion\\20261014T121946_001827Z_all_strategies_seed42\\K5_uniform_gru",
+  "test_metrics": {
+    "samples": 61,
+    "accuracy": 0.7049180327868853,
+    "precision": 0.6111111111111112,
+    "recall": 0.8461538461538461,
+    "f1": 0.7096774193548387,
+    "roc_auc": 0.8043956043956044,
+    "false_alarm_rate": 0.4,
+    "tn": 21,
+    "fp": 14,
+    "fn": 4,
+    "tp": 22,
+    "loss": 0.47443233140366703
+  }
+}
